@@ -25,7 +25,7 @@
             <p>Hello <%= sessionAccount.getUsername() %><a href="logout">(Đăng xuất)</a></p>
             <br><a href="xemdanhsach">Theo dõi danh sách</a>
             <br><a href="">Xuất báo cáo</a>
-            <br><a href="">Cấu hình</a>
+            <br><a href="config">Cấu hình</a>
         <%
             }
             else

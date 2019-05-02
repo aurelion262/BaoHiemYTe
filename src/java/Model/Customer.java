@@ -13,6 +13,32 @@ public class Customer {
     int id,gender,phone,families_id, group_id, group_objects_id, businesses_id;
     String code_BHXH, name, card_id, date_given, place_given, addr, original_addr, birthday, jobs, created_at, updated_at;
 
+    @Override
+    public boolean equals(Object o)
+    {
+        return
+        (
+                ((Customer)o).getAddr().equals(this.getAddr())
+                &&  ((Customer)o).getBirthday() == this.getBirthday()
+                &&  ((Customer)o).getBusinesses_id() == this.getBusinesses_id()
+                &&  ((Customer)o).getCard_id().equals(this.getAddr())
+                &&  ((Customer)o).getCode_BHXH().equals(this.getCode_BHXH())
+                &&  ((Customer)o).getCreated_at().equals(this.getCreated_at())
+                &&  ((Customer)o).getDate_given().equals(this.getDate_given())
+                &&  ((Customer)o).getFamilies_id() == this.getFamilies_id()
+                &&  ((Customer)o).getGender() == this.getGender()
+                &&  ((Customer)o).getGroup_id() == this.getId()
+                &&  ((Customer)o).getGroup_objects_id() == this.getGroup_objects_id()
+                &&  ((Customer)o).getId() == this.getId()
+                &&  ((Customer)o).getJobs().equals(this.getJobs())
+                &&  ((Customer)o).getName().equals(this.getName())
+                &&  ((Customer)o).getOriginal_addr().equals(this.getOriginal_addr())
+                &&  ((Customer)o).getPhone()== this.getPhone()
+                &&  ((Customer)o).getPlace_given().equals(this.getPlace_given())
+                &&  ((Customer)o).getUpdated_at().equals(this.getUpdated_at())
+        );
+    }
+    
     public int getId() {
         return id;
     }

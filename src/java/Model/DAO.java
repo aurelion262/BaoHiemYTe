@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -183,5 +184,49 @@ public class DAO {
             e.printStackTrace();
         }
         return list;
+    }
+    
+    public ArrayList<Config_BaseSalary> getAllConfig_BaseSalary()
+    {
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        ArrayList<Config_BaseSalary> list = new ArrayList<>();
+        String sql = "SELECT * FROM baohiemyte.config_base_salaries";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Config_BaseSalary c = new Config_BaseSalary();                
+                c.setBase_salary(rs.getLong("base_salary"));
+                c.setId(rs.getInt("id"));
+                c.setUpdated_at(rs.getString(sql));
+                c.setStart_date(rs.getString("start_date"));
+                list.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
+    public Config_BaseSalary getLastConfig_BaseSalary()
+    {
+        String sql = "SELECT * FROM baohiemyte.config_base_salaries ORDER BY ID DESC LIMIT 1";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Config_BaseSalary c = new Config_BaseSalary();                
+                c.setBase_salary(rs.getLong("base_salary"));
+                c.setId(rs.getInt("id"));
+                c.setUpdated_at(rs.getString("updated_at"));
+                c.setStart_date(rs.getString("start_date"));
+                return c;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

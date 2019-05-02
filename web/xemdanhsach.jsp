@@ -22,6 +22,7 @@
         </select> 
         <%
             String type = request.getParameter("type");
+            if(type==null) type="transaction";
             if(type==null || type.equals("transaction"))
             {
         %>

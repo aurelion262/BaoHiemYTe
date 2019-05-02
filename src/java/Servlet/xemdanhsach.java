@@ -6,6 +6,7 @@
 
 package Servlet;
 
+import Model.Account;
 import Model.Customer;
 import Model.DAO;
 import Model.Transaction;
@@ -43,10 +44,13 @@ public class xemdanhsach extends HttpServlet {
         String searchMode = request.getParameter("searchMode");
         String key = request.getParameter("key");
         String value = request.getParameter("value");
-        if(session.getAttribute("account")==null)
+        
+        Account sessionAccount = (Account)session.getAttribute("account");       
+        
+        if(sessionAccount==null)
         {
             response.sendRedirect("index.jsp");
-//            response.sendRedirect(request.getHeader("Referer"));
+            //            response.sendRedirect(request.getHeader("Referer"));
         }
         else
         {
