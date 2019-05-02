@@ -9,10 +9,24 @@ package Model;
  *
  * @author ADMIN
  */
+    
 public class Transaction {
     int id;
     long paid,support;
     String customer_id;
+    
+    @Override
+    public boolean equals(Object o)
+    {
+        Transaction t = (Transaction)o;
+        return
+        (
+                t.getCustomer_id().equals(this.getCustomer_id())
+                && t.getId() == this.getId()
+                && t.getPaid() == this.getPaid()
+                && t.getSupport() == this.getSupport()
+        );
+    }
 
     public int getId() {
         return id;
