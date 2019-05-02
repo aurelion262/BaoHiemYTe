@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name="login", urlPatterns={"/login"})
 public class login extends HttpServlet {
-    
+
     public static String convertByteToHex1(byte[] data)
     {
         BigInteger number = new BigInteger(1, data);
@@ -38,6 +38,7 @@ public class login extends HttpServlet {
         return hashtext;
     }
     
+    //Trả về mã MD5 tương ứng với tham số là chuỗi input
     public static String getMD5(String input)
     {
         try
@@ -59,11 +60,12 @@ public class login extends HttpServlet {
 
     } 
 
+    //Thực hiện kiểm tra thông tin đăng nhập xem có ứng với tài khoản nào trong db không
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");     
         HttpSession session = request.getSession();
         if(session.getAttribute("account")!=null)
         {
@@ -75,18 +77,27 @@ public class login extends HttpServlet {
             DAO dao = new DAO();
             String username = (String)request.getParameter("username");
             String password = (String)request.getParameter("password");
+            //mã hóa pass
             String passwordMD5 = getMD5(password);
+            
+            //tìm kiếm trong db, nếu thấy trả lại account tương ứng, nếu không trả lại null
             Account a = dao.getAccount(username, passwordMD5);
+            
+            //nếu tìm thấy
             if(a!=null)
             {
+                //Thêm vào session một attribute tên "account", với giá trị của attribute là Account a vừa lấy được từ db
                 session.setAttribute("account", a);
+                //điều hướng về trang chủ
                 response.sendRedirect("index.jsp");
 //                RequestDispatcher dpc = request.getRequestDispatcher("index");
 //                dpc.forward(request, response);
-            }            
+            }       
+            //nếu không tìm thấy
             else
             {
-                request.setAttribute("message","Nhập sai tên tài khoản/mật khẩu. Vui lòng nhập lại !");
+//                request.setAttribute("message","Nhập sai tên tài khoản/mật khẩu. Vui lòng nhập lại !");
+                //Điều hướng trờ lại trang login
                 RequestDispatcher dpc = request.getRequestDispatcher("login.jsp");
                 dpc.forward(request, response);
             }

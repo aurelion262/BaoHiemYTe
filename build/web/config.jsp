@@ -45,11 +45,21 @@
             </div>            
             <div>
                 Cập nhật lần cuối lúc : <% if (lastConfigBaseSalary!=null) { %> <%= lastConfigBaseSalary.getUpdated_at() %> <% } %>
-            </div>
-            <input type="submit" value="Cập nhật" ></input>
-        </form>
+            </div>        
             
         <h1>Cấu hình hộ gia đình</h1>
-        
+        <table>
+            <tr>
+                <th>Thành viên 1</th>
+                <th>Thành viên 2</th>
+                <th>Thành viên 3</th>
+                <th>Thành viên 4</th>
+            </tr>
+            <tr>
+                
+            </tr>
+        </table>
+            <input type="submit" value="Cập nhật" ></input>
+        </form>
     </body>
 </html>

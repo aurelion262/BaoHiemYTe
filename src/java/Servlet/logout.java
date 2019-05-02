@@ -26,6 +26,7 @@ public class logout extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         HttpSession session = request.getSession();
+        //Xóa hết data trong session (vốn là nơi có attribute account dùng để duy trì đăng nhập)
         session.invalidate();
         response.sendRedirect("index.jsp");
     } 

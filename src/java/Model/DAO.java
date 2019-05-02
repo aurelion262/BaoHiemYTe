@@ -229,4 +229,52 @@ public class DAO {
         }
         return null;
     }
+    
+    public Config_rate_families getLastConfig_rate_families()
+    {
+        String sql = "SELECT * FROM baohiemyte.config_rate_families ORDER BY ID DESC LIMIT 1";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Config_rate_families c = new Config_rate_families();                
+                c.setId(rs.getInt("id"));
+                c.setMember1(rs.getDouble("member1"));
+                c.setMember2(rs.getDouble("member2"));
+                c.setMember3(rs.getDouble("member3"));
+                c.setMember4(rs.getDouble("member4"));
+                c.setMember5(rs.getDouble("member5"));
+                c.setStart_at(rs.getString("start_at"));
+                c.setUpdated_at(rs.getString("updated_at"));
+                return c;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public Config_rate_objects getLastConfig_rate_objects()
+    {
+        String sql = "SELECT * FROM baohiemyte.config_rate_families ORDER BY ID DESC LIMIT 1";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                Config_rate_objects c = new Config_rate_objects();                
+                c.setId(rs.getInt("id"));
+                c.setBase(rs.getLong("base"));
+                c.setGroups_objects_id(rs.getInt("groups_objects_id"));
+                c.setRate(rs.getDouble("rate"));
+                c.setStart_at(rs.getString("start_at"));
+                c.setUpdated_at(rs.getString("updated_at"));
+                return c;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

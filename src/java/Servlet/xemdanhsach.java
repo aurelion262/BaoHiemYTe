@@ -40,9 +40,13 @@ public class xemdanhsach extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
+        //type : loại tìm kiếm. Nếu lúc search chọn khách hàng thì type là "customer", chọn giao dịch thì là "transaction"
         String type = request.getParameter("type");
+        //searchMode : true hoặc false. True nếu trang này được điều hướng tới sau khi người dùng bấm nút tìm kiếm
         String searchMode = request.getParameter("searchMode");
+        //key : tên của trường (cột) muốn tìm theo
         String key = request.getParameter("key");
+        //value : giá trị của key(trường/cột) muốn tìm kiếm
         String value = request.getParameter("value");
         
         Account sessionAccount = (Account)session.getAttribute("account");       
@@ -50,7 +54,7 @@ public class xemdanhsach extends HttpServlet {
         if(sessionAccount==null)
         {
             response.sendRedirect("index.jsp");
-            //            response.sendRedirect(request.getHeader("Referer"));
+//            response.sendRedirect(request.getHeader("Referer"));
         }
         else
         {
