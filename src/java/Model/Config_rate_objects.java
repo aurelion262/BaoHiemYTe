@@ -13,7 +13,7 @@ public class Config_rate_objects {
     int id, groups_objects_id;
     long base;
     double rate;
-    String start_at, updated_at;
+    String start_date, updated_at;
 
     public int getId() {
         return id;
@@ -47,12 +47,12 @@ public class Config_rate_objects {
         this.rate = rate;
     }
 
-    public String getStart_at() {
-        return start_at;
+    public String getStart_date() {
+        return start_date;
     }
 
-    public void setStart_at(String start_at) {
-        this.start_at = start_at;
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
     }
 
     public String getUpdated_at() {

@@ -245,7 +245,7 @@ public class DAO {
                 c.setMember3(rs.getDouble("member3"));
                 c.setMember4(rs.getDouble("member4"));
                 c.setMember5(rs.getDouble("member5"));
-                c.setStart_at(rs.getString("start_at"));
+                c.setStart_date(rs.getString("start_date"));
                 c.setUpdated_at(rs.getString("updated_at"));
                 return c;
             }
@@ -268,7 +268,7 @@ public class DAO {
                 c.setBase(rs.getLong("base"));
                 c.setGroups_objects_id(rs.getInt("groups_objects_id"));
                 c.setRate(rs.getDouble("rate"));
-                c.setStart_at(rs.getString("start_at"));
+                c.setStart_date(rs.getString("start_date"));
                 c.setUpdated_at(rs.getString("updated_at"));
                 return c;
             }
@@ -276,5 +276,39 @@ public class DAO {
             e.printStackTrace();
         }
         return null;
+    }    
+
+    public void addConfig_BaseSalary(Config_BaseSalary c)
+    {
+        String sql="INSERT INTO baohiemyte.config_base_salaries(start_date, base_salary, updated_at) "
+                 + "VALUES(?,?,?)";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, c.getStart_date());
+            ps.setLong(2, c.getBase_salary());
+            ps.setString(3, c.getUpdated_at());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void addConfig_rate_families(Config_rate_families c)
+    {
+        String sql="INSERT INTO baohiemyte.config_rate_families(member1, member2, member3, member4, member5, start_date, updated_at) "
+                 + "VALUES(?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setDouble(1, c.getMember1());
+            ps.setDouble(2, c.getMember2());
+            ps.setDouble(3, c.getMember3());
+            ps.setDouble(4, c.getMember4());
+            ps.setDouble(5, c.getMember5());
+            ps.setString(6, c.getStart_date());
+            ps.setString(7, c.getUpdated_at());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

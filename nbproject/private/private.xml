@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/BaoHiemYTe/web/index.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/BaoHiemYTe/src/java/Model/DAO.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/BaoHiemYTe/src/java/Model/Transaction.java</file>
             <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/BaoHiemYTe/src/java/Model/Customer.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/BaoHiemYTe/web/xemdanhsach.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/BaoHiemYTe/web/login.jsp</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/BaoHiemYTe/src/java/Servlet/xemdanhsach.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/BaoHiemYTe/web/BHYT.css</file>
+            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/BaoHiemYTe/web/config.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/BaoHiemYTe/src/java/Servlet/addConfig.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/BaoHiemYTe/src/java/Servlet/config.java</file>
         </group>
     </open-files>
 </project-private>

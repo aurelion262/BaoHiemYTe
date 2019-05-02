@@ -8,6 +8,8 @@ package Servlet;
 
 import Model.Account;
 import Model.Config_BaseSalary;
+import Model.Config_rate_families;
+import Model.Config_rate_objects;
 import Model.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -46,8 +48,11 @@ public class config extends HttpServlet {
         {
             DAO dao = new DAO();
             Config_BaseSalary lastConfigBaseSalary = dao.getLastConfig_BaseSalary();
-            System.out.println(lastConfigBaseSalary==null);
+            Config_rate_families lastConfig_rate_families = dao.getLastConfig_rate_families();
+            Config_rate_objects lastConfig_rate_objects = dao.getLastConfig_rate_objects();
             request.setAttribute("lastConfigBaseSalary", lastConfigBaseSalary);
+            request.setAttribute("lastConfig_rate_families", lastConfig_rate_families);
+            request.setAttribute("lastConfig_rate_objects", lastConfig_rate_objects);
             RequestDispatcher dpc = request.getRequestDispatcher("config.jsp");
             dpc.forward(request, response);
             dao.close();
