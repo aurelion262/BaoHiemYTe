@@ -38,14 +38,14 @@
         <h1>Cấu hình lương cơ bản</h1>
         <form method="POST" action="addConfig" onsubmit="return registerInputCheck()"> 
             <div>
-                Ngày bắt đầu : 
+                Ngày bắt đầu &nbsp: 
                 <input type="date" name="BS_start_date" placeholder="YYYY-MM-DD"
                     <% if (lastConfigBaseSalary!=null) { %>value="<%=lastConfigBaseSalary.getStart_date()%>" <%}%>
-                    autofocus="true" style="margin-left: 4px">
+                    autofocus="true">
             </div>
             <div>
                 Lương cơ bản :
-                <input type="number" name="base_salary" placeholder=""
+                <input type="number" name="base_salary" placeholder="" min="0"
                     <% if (lastConfigBaseSalary!=null) { %>value="<%=lastConfigBaseSalary.getBase_salary()%>" <%}%>>
                 (VND)
             </div>            
@@ -63,15 +63,15 @@
                 <th>Thành viên 5</th>
             </tr>
             <tr>
-                <td><input type="number" name="member1" placeholder=""
+                <td><input type="number" name="member1" placeholder="" min="0" step="0.1"
                     <% if (lastConfig_rate_families!=null) { %>value="<%= lastConfig_rate_families.getMember1()*100 %>" <%}%>>%</td>
-                <td><input type="number" name="member2" placeholder=""
+                <td><input type="number" name="member2" placeholder="" min="0" step="0.1"
                     <% if (lastConfig_rate_families!=null) { %>value="<%= lastConfig_rate_families.getMember2()*100 %>" <%}%>>%</td>
-                <td><input type="number" name="member3" placeholder=""
+                <td><input type="number" name="member3" placeholder="" min="0" step="0.1"
                     <% if (lastConfig_rate_families!=null) { %>value="<%= lastConfig_rate_families.getMember3()*100 %>" <%}%>>%</td>
-                <td><input type="number" name="member4" placeholder=""
+                <td><input type="number" name="member4" placeholder="" min="0" step="0.1"
                     <% if (lastConfig_rate_families!=null) { %>value="<%= lastConfig_rate_families.getMember4()*100 %>" <%}%>>%</td>
-                <td><input type="number" name="member5" placeholder=""
+                <td><input type="number" name="member5" placeholder="" min="0" step="0.1"
                     <% if (lastConfig_rate_families!=null) { %>value="<%= lastConfig_rate_families.getMember5()*100 %>" <%}%>>%</td>
             </tr>
         </table>
