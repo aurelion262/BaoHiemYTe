@@ -5,6 +5,9 @@
  */
 package Model;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 /**
  *
  * @author ADMIN
@@ -12,7 +15,8 @@ package Model;
 public class Config_rate_families {
     int id;
     double member1,member2,member3,member4,member5;
-    String start_date,updated_at;
+    Date start_date;
+    Timestamp updated_at;
 
     public int getId() {
         return id;
@@ -62,21 +66,20 @@ public class Config_rate_families {
         this.member5 = member5;
     }
 
-    public String getStart_date() {
+    public Date getStart_date() {
         return start_date;
     }
 
-    public void setStart_date(String start_date) {
+    public void setStart_date(Date start_date) {
         this.start_date = start_date;
     }
 
-    public String getUpdated_at() {
+    public Timestamp getUpdated_at() {
         return updated_at;
     }
 
-    public void setUpdated_at(String updated_at) {
+    public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
-    }
-    
+    }   
     
 }

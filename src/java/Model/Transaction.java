@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author ADMIN
@@ -14,6 +16,7 @@ public class Transaction {
     int id;
     long paid,support;
     String customer_id;
+    Timestamp created_at;
     
     @Override
     public boolean equals(Object o)
@@ -27,6 +30,14 @@ public class Transaction {
                 && t.getSupport() == this.getSupport()
         );
     }
+
+    public Timestamp getCreated_at() {
+        return created_at;        
+    }
+
+    public void setCreated_at(Timestamp created_at) {
+        this.created_at = created_at;
+    }   
 
     public int getId() {
         return id;

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -43,7 +44,8 @@ public class DAO {
                 e.printStackTrace();
             }
         }
-    }
+    }   
+
     
     public Account getAccount(String username, String password)
     {
@@ -118,6 +120,7 @@ public class DAO {
                 t.setCustomer_id(rs.getString("Customer_id"));
                 t.setPaid(rs.getLong("paid"));
                 t.setSupport(rs.getLong("support"));
+                t.setCreated_at(rs.getTimestamp("created_at"));
                 list.add(t);
             }
         } catch (Exception e) {
@@ -178,6 +181,33 @@ public class DAO {
                 t.setCustomer_id(rs.getString("Customer_id"));
                 t.setPaid(rs.getLong("paid"));
                 t.setSupport(rs.getLong("support"));
+                t.setCreated_at(rs.getTimestamp("created_at"));
+                list.add(t);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
+    public ArrayList<Transaction> getTransactionByRange(String key, Timestamp begin, Timestamp end)
+    {
+        ArrayList<Transaction> list = new ArrayList<>();
+        String sql = "SELECT * FROM baohiemyte.transactions "
+                    +"WHERE " + key + " BETWEEN ? AND ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setTimestamp(1, begin);
+            ps.setTimestamp(2, end);
+            ResultSet rs = ps.executeQuery();            
+            while(rs.next())
+            {
+                Transaction t = new Transaction();
+                t.setId(rs.getInt("ID"));
+                t.setCustomer_id(rs.getString("Customer_id"));
+                t.setPaid(rs.getLong("paid"));
+                t.setSupport(rs.getLong("support"));
+                t.setCreated_at(rs.getTimestamp("created_at"));
                 list.add(t);
             }
         } catch (Exception e) {
@@ -199,8 +229,8 @@ public class DAO {
                 Config_BaseSalary c = new Config_BaseSalary();                
                 c.setBase_salary(rs.getLong("base_salary"));
                 c.setId(rs.getInt("id"));
-                c.setUpdated_at(rs.getString(sql));
-                c.setStart_date(rs.getString("start_date"));
+                c.setUpdated_at(rs.getTimestamp("updated_at"));
+                c.setStart_date(rs.getDate("start_date"));
                 list.add(c);
             }
         } catch (Exception e) {
@@ -220,8 +250,8 @@ public class DAO {
                 Config_BaseSalary c = new Config_BaseSalary();                
                 c.setBase_salary(rs.getLong("base_salary"));
                 c.setId(rs.getInt("id"));
-                c.setUpdated_at(rs.getString("updated_at"));
-                c.setStart_date(rs.getString("start_date"));
+                c.setUpdated_at(rs.getTimestamp("updated_at"));
+                c.setStart_date(rs.getDate("start_date"));
                 return c;
             }
         } catch (Exception e) {
@@ -245,8 +275,8 @@ public class DAO {
                 c.setMember3(rs.getDouble("member3"));
                 c.setMember4(rs.getDouble("member4"));
                 c.setMember5(rs.getDouble("member5"));
-                c.setStart_date(rs.getString("start_date"));
-                c.setUpdated_at(rs.getString("updated_at"));
+                c.setStart_date(rs.getDate("start_date"));
+                c.setUpdated_at(rs.getTimestamp("updated_at"));
                 return c;
             }
         } catch (Exception e) {
@@ -284,9 +314,9 @@ public class DAO {
                  + "VALUES(?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, c.getStart_date());
+            ps.setDate(1, c.getStart_date());
             ps.setLong(2, c.getBase_salary());
-            ps.setString(3, c.getUpdated_at());
+            ps.setTimestamp(3, c.getUpdated_at());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -304,8 +334,8 @@ public class DAO {
             ps.setDouble(3, c.getMember3());
             ps.setDouble(4, c.getMember4());
             ps.setDouble(5, c.getMember5());
-            ps.setString(6, c.getStart_date());
-            ps.setString(7, c.getUpdated_at());
+            ps.setDate(6, c.getStart_date());
+            ps.setTimestamp(7, c.getUpdated_at());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

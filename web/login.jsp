@@ -22,7 +22,7 @@
         <div class="style_center">
             <form method="POST" action="login">
                 <div class="style_center">Tài khoản</div>
-                <input class="style_center" type="text" name="username" placeholder="Tài khoản">
+                <input class="style_center" type="text" name="username" placeholder="Tài khoản" autofocus="true">
                 <div class="style_center">Mật khẩu</div>
                 <input class="style_center" type="password" name="password" placeholder="Mật khẩu">
                 <div></div>

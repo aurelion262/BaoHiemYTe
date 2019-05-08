@@ -15,14 +15,17 @@
         <title>Danh sách đóng bảo hiểm y tế</title>
     </head>
     <body>
-        Loại danh sách :
-        <select onchange="javascript:location.href = this.value;" onfocus="this.selectedIndex = -1">
-            <option value="xemdanhsach?type=transaction">Danh sách giao dịch</option> 
-            <option value="xemdanhsach?type=customer">Danh sách khách hàng</option>                       
-        </select> 
         <%
             String type = request.getParameter("type");
             if(type==null) type="transaction";
+        %>
+        <a href="index.jsp"><< Quay lại trang chủ</a>
+        <br>Loại danh sách :
+        <select onchange="javascript:location.href = this.value;">
+            <option value="xemdanhsach?type=transaction">Danh sách giao dịch</option> 
+            <option value="xemdanhsach?type=customer" <% if(type!=null && !type.equals("transaction")) { %> selected="selected" <% } %>>Danh sách khách hàng</option>                       
+        </select> 
+        <%            
             if(type==null || type.equals("transaction"))
             {
         %>
@@ -34,6 +37,7 @@
                 <input type="text" id="value" name="value">
                 <input type="submit" value="Tìm">
             </form>
+            <h1>Danh sách giao dịch</h1>
             <table border="black">
                 <tr>
                     <th>ID</th>
@@ -71,6 +75,7 @@
                 <input type="text" id="value" name="value">
                 <input type="submit" value="Tìm">
             </form>
+            <h1>Danh sách khách hàng</h1>
             <table border="black">
                 <tr>
                     <th>ID</th>
